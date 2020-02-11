@@ -14,3 +14,5 @@ class InputStockQuote extends Component {
     )
   }
 }
+
+export default InputStockQuote ; 

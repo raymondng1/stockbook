@@ -1,5 +1,4 @@
 import React, {Component} from 'react'; 
-import {Component } from React; 
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,15 +6,18 @@ import {
   Redirect
 } from 'react-router-dom';
 
+import InputStockQuote from './InputStockQuote';
+
 class Root extends Component {
-
-
   render(){
     return (
-      <div> Stock </div>
+      <Router> 
+        <div> Stock </div>
+        <Route path="/home" componenent={InputStockQuote}/>
+        <div> wtf </div>
+      </Router>
     )
   }
 }
-
 
 export default Root; 

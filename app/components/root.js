@@ -13,10 +13,8 @@ class Root extends Component {
   render(){
     return (
       <Router> 
-        <div> Stock </div>
         <Route path="/home" component={InputStockQuote}/>
         <Route path="/login" component={Login}/> 
-        <div> wtf </div> 
       </Router>
     )
   }

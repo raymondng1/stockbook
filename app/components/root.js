@@ -7,14 +7,16 @@ import {
 } from 'react-router-dom';
 
 import InputStockQuote from './InputStockQuote';
+import Login from './Login';
 
 class Root extends Component {
   render(){
     return (
       <Router> 
         <div> Stock </div>
-        <Route path="/home" componenent={InputStockQuote}/>
-        <div> wtf </div>
+        <Route path="/home" component={InputStockQuote}/>
+        <Route path="/login" component={Login}/> 
+        <div> wtf </div> 
       </Router>
     )
   }

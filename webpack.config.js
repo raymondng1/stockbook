@@ -5,9 +5,6 @@ const { resolve } = require('path');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  node: {
-    fs: 'empty'
-  },
 	entry: ['babel-polyfill', './app/main'],
 	output: {
 		path: __dirname,

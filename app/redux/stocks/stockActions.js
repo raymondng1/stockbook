@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { SET_STOCK_DATA } from './stockConstants';
 
-require('dotenv').config();
-
 //Action creators for getting/fetching data with thunk middleware in the '../../store.js'
 export const setStockData = stockData => {
 	return {
@@ -11,17 +9,18 @@ export const setStockData = stockData => {
 	};
 };
 
-export const findStockData = stockSymbol => {
+export const findStockData = (stockSymbol) => {
+	console.log('this is the stockSymbol', stockSymbol)
 	return dispatch => {
 		axios
-			.get(
-				`https://cloud.iexapis.com/stable/${stockSymbol}/aapl/quote?token=${process.env.IEXCLOUD_PUBLIC_KEY}`
+			.post(
+				`/api/stocks`, stockSymbol
 			)
 			.then(res => {
 				dispatch(setStockData(res.data));
       })
       .catch(e => {
-        console.error(e)
+        console.log(e)
       })
 	};
 };

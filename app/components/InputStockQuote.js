@@ -17,18 +17,16 @@ class InputStockQuote extends Component {
     this.props.fetchStockData(this.state)
 	};
 	render() {
-    console.log('this is the dispatch', this.props)
-
 		return (
 			<Form>
 				<Form.Group>
 					<Form.Label> Stock Quote </Form.Label>
 					<Form.Control
-						name='inputstocksymbol'
+						name='stockSymbol'
 						placeholder='Enter Stock Symbol'
 						onChange={this.handleChange}
 					/>
-					<Button> Search </Button>
+					<Button onClick={this.onSubmit}> Search </Button>
 				</Form.Group>
 			</Form>
 		);

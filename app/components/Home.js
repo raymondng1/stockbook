@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InputStockQuote from './InputStockQuote'
 import StockData from './StockData';
+import StockChart from './StockChart'; 
 
 class Homepage extends Component {
   render(){
@@ -8,6 +9,7 @@ class Homepage extends Component {
       <main> 
         <InputStockQuote/> 
         <StockData/>
+        <StockChart/>
       </main>
     )
   }

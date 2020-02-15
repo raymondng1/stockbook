@@ -114,6 +114,10 @@ var _StockData = __webpack_require__(/*! ./StockData */ "./app/components/StockD
 
 var _StockData2 = _interopRequireDefault(_StockData);
 
+var _StockChart = __webpack_require__(/*! ./StockChart */ "./app/components/StockChart.js");
+
+var _StockChart2 = _interopRequireDefault(_StockChart);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -138,7 +142,8 @@ var Homepage = function (_Component) {
         'main',
         null,
         _react2.default.createElement(_InputStockQuote2.default, null),
-        _react2.default.createElement(_StockData2.default, null)
+        _react2.default.createElement(_StockData2.default, null),
+        _react2.default.createElement(_StockChart2.default, null)
       );
     }
   }]);
@@ -379,6 +384,80 @@ exports.default = Login;
 
 /***/ }),
 
+/***/ "./app/components/StockChart.js":
+/*!**************************************!*\
+  !*** ./app/components/StockChart.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StockChart = function (_Component) {
+	_inherits(StockChart, _Component);
+
+	function StockChart() {
+		_classCallCheck(this, StockChart);
+
+		return _possibleConstructorReturn(this, (StockChart.__proto__ || Object.getPrototypeOf(StockChart)).apply(this, arguments));
+	}
+
+	_createClass(StockChart, [{
+		key: 'render',
+		value: function render() {
+			console.log('these are the prices which is an array of objects', this.props.stockHistoricalPrices);
+			var stockHistoricalPrices = this.props.stockHistoricalPrices;
+
+
+			if (!stockHistoricalPrices) {
+				return _react2.default.createElement(
+					'div',
+					null,
+					' insert chart '
+				);
+			}
+			return _react2.default.createElement(
+				'div',
+				null,
+				' this is the chart '
+			);
+		}
+	}]);
+
+	return StockChart;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+	return {
+		stockHistoricalPrices: state.stockHistoricalPriceReducer
+	};
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(StockChart);
+
+/***/ }),
+
 /***/ "./app/components/StockData.js":
 /*!*************************************!*\
   !*** ./app/components/StockData.js ***!
@@ -421,8 +500,9 @@ var StockData = function (_Component) {
   _createClass(StockData, [{
     key: 'render',
     value: function render() {
-      console.log('this is the PROPS =>', this.props.stockInformation);
+      // console.log('this is the PROPS =>', this.props.stockInformation)
       var stockInformation = this.props.stockInformation;
+
 
       if (!this.props.stockInformation) {
         return _react2.default.createElement(
@@ -470,6 +550,11 @@ var StockData = function (_Component) {
           ' 52 Week Low: ',
           stockInformation.week52Low,
           ' '
+        ),
+        _react2.default.createElement(
+          'button',
+          null,
+          ' Add to Watch List '
         )
       );
     }

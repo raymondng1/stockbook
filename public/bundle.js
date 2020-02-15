@@ -438,9 +438,13 @@ var StockChart = function (_Component) {
 				);
 			}
 			return _react2.default.createElement(
-				'div',
+				'main',
 				null,
-				' this is the chart '
+				_react2.default.createElement(
+					'div',
+					null,
+					' This is the chart '
+				)
 			);
 		}
 	}]);

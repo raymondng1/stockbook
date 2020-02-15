@@ -143,6 +143,7 @@ var InputStockQuote = function (_Component) {
 		}, _this.onSubmit = function (event) {
 			event.preventDefault();
 			_this.props.fetchStockData(_this.state);
+			_this.props.fetchStockPrice(_this.state);
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -182,6 +183,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	return {
 		fetchStockData: function fetchStockData(stockSymbol) {
 			return dispatch((0, _stockActions.findStockData)(stockSymbol));
+		},
+		fetchStockPrice: function fetchStockPrice(stockSymbol) {
+			return dispatch((0, _stockActions.findStockPrice)(stockSymbol));
 		}
 	};
 };
@@ -452,7 +456,7 @@ exports.default = rootReducer;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.findStockData = exports.setStockData = undefined;
+exports.findStockPrice = exports.setStockPrice = exports.findStockData = exports.setStockData = undefined;
 
 var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
@@ -471,10 +475,26 @@ var setStockData = exports.setStockData = function setStockData(stockData) {
 };
 
 var findStockData = exports.findStockData = function findStockData(stockSymbol) {
-	console.log('this is the stockSymbol', stockSymbol);
 	return function (dispatch) {
 		_axios2.default.post('/api/stocks', stockSymbol).then(function (res) {
 			dispatch(setStockData(res.data));
+		}).catch(function (e) {
+			console.log(e);
+		});
+	};
+};
+
+var setStockPrice = exports.setStockPrice = function setStockPrice(stockPriceData) {
+	return {
+		type: _stockConstants.SET_STOCK_HISTORICAL_PRICE,
+		stockPriceData: stockPriceData
+	};
+};
+
+var findStockPrice = exports.findStockPrice = function findStockPrice(stockSymbol) {
+	return function (dispatch) {
+		_axios2.default.post('/api/stocks/prices', stockSymbol).then(function (res) {
+			dispatch(setStockPrice(res.data));
 		}).catch(function (e) {
 			console.log(e);
 		});
@@ -497,6 +517,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var SET_STOCK_DATA = exports.SET_STOCK_DATA = 'SET_STOCK_DATA';
+var SET_STOCK_HISTORICAL_PRICE = exports.SET_STOCK_HISTORICAL_PRICE = 'SET_STOCK_HISTORICAL_PRICE';
 
 /***/ }),
 

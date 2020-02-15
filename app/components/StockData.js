@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 
 class StockData extends Component {
   render(){
-    console.log('this is the', this.props.stockData)
-    return 
+    console.log('this is the props of the stock data', this.props.stockData)
+    return <div> </div>
   }
 }
 

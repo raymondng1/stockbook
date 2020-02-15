@@ -20,9 +20,8 @@ router.post('/stocks', (req, res, next) => {
 		.catch(e => res.status(404));
 });
 
-router.get('/stocks/prices', (req, res, next) => {
-	const stockSymbol = 'IQ';
-	// const { stockSymbol } = req.body;
+router.post('/stocks/prices', (req, res, next) => {
+	const { stockSymbol } = req.body;
 	axios
 		.get(
 			`https://cloud.iexapis.com/stable/stock/${stockSymbol}/chart/max?token=${process.env.IEXCLOUD_PUBLIC_KEY}`

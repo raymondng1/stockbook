@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_STOCK_DATA } from './stockConstants';
+import { SET_STOCK_DATA, SET_STOCK_HISTORICAL_PRICE } from './stockConstants';
 
 //Action creators for getting/fetching data with thunk middleware in the '../../store.js'
 export const setStockData = stockData => {
@@ -9,8 +9,7 @@ export const setStockData = stockData => {
 	};
 };
 
-export const findStockData = (stockSymbol) => {
-	console.log('this is the stockSymbol', stockSymbol)
+export const findStockData = stockSymbol => {
 	return dispatch => {
 		axios
 			.post(
@@ -24,3 +23,26 @@ export const findStockData = (stockSymbol) => {
       })
 	};
 };
+
+export const setStockPrice = stockPriceData => {
+	return {
+		type: SET_STOCK_HISTORICAL_PRICE,
+		stockPriceData
+	}
+}
+
+export const findStockPrice= stockSymbol => {
+	return dispatch => {
+		axios
+			.post(
+				`/api/stocks/prices`, stockSymbol
+			)
+			.then(res => {
+				dispatch(setStockPrice(res.data));
+      })
+      .catch(e => {
+        console.log(e)
+      })
+	};
+};
+

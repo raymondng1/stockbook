@@ -7,13 +7,14 @@ import {
 } from 'react-router-dom';
 
 import InputStockQuote from './InputStockQuote';
+import Homepage from './Home';
 import Login from './Login';
 
 class Root extends Component {
 	render() {
 		return (
 			<Router>
-				<Route path='/' component={InputStockQuote} />
+				<Route path='/' component={Homepage} />
 				<Route path='/login' component={Login} />
 			</Router>
 		);

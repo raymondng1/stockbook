@@ -34,6 +34,12 @@ class InputStockQuote extends Component {
 	}
 }
 
+const mapStateToProps = state => {
+	return {
+		stockInformation: state.stockData
+	};
+};
+
 const mapDispatchToProps = dispatch => {
 	return {
 		fetchStockData: stockSymbol => dispatch(findStockData(stockSymbol)),
@@ -41,4 +47,4 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-export default connect(null, mapDispatchToProps)(InputStockQuote);
+export default connect(mapStateToProps, mapDispatchToProps)(InputStockQuote);

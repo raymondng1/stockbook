@@ -86,6 +86,70 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./app/components/Home.js":
+/*!********************************!*\
+  !*** ./app/components/Home.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _InputStockQuote = __webpack_require__(/*! ./InputStockQuote */ "./app/components/InputStockQuote.js");
+
+var _InputStockQuote2 = _interopRequireDefault(_InputStockQuote);
+
+var _StockData = __webpack_require__(/*! ./StockData */ "./app/components/StockData.js");
+
+var _StockData2 = _interopRequireDefault(_StockData);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Homepage = function (_Component) {
+  _inherits(Homepage, _Component);
+
+  function Homepage() {
+    _classCallCheck(this, Homepage);
+
+    return _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).apply(this, arguments));
+  }
+
+  _createClass(Homepage, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'main',
+        null,
+        _react2.default.createElement(_InputStockQuote2.default, null),
+        _react2.default.createElement(_StockData2.default, null)
+      );
+    }
+  }]);
+
+  return Homepage;
+}(_react.Component);
+
+exports.default = Homepage;
+
+/***/ }),
+
 /***/ "./app/components/InputStockQuote.js":
 /*!*******************************************!*\
   !*** ./app/components/InputStockQuote.js ***!
@@ -179,6 +243,12 @@ var InputStockQuote = function (_Component) {
 	return InputStockQuote;
 }(_react.Component);
 
+var mapStateToProps = function mapStateToProps(state) {
+	return {
+		stockInformation: state.stockData
+	};
+};
+
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	return {
 		fetchStockData: function fetchStockData(stockSymbol) {
@@ -190,7 +260,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	};
 };
 
-exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(InputStockQuote);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(InputStockQuote);
 
 /***/ }),
 
@@ -309,6 +379,115 @@ exports.default = Login;
 
 /***/ }),
 
+/***/ "./app/components/StockData.js":
+/*!*************************************!*\
+  !*** ./app/components/StockData.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StockData = function (_Component) {
+  _inherits(StockData, _Component);
+
+  function StockData() {
+    _classCallCheck(this, StockData);
+
+    return _possibleConstructorReturn(this, (StockData.__proto__ || Object.getPrototypeOf(StockData)).apply(this, arguments));
+  }
+
+  _createClass(StockData, [{
+    key: 'render',
+    value: function render() {
+      console.log('this is the PROPS =>', this.props.stockInformation);
+      var stockInformation = this.props.stockInformation;
+
+      if (!this.props.stockInformation) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          ' Search the stock '
+        );
+      }
+      return _react2.default.createElement(
+        'main',
+        null,
+        _react2.default.createElement(
+          'div',
+          null,
+          ' Stock Information '
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          ' Stock Ticker: ',
+          stockInformation.symbol
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          ' Compnany Name: ',
+          this.props.stockInformation.companyName
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          ' Primay Exchange: ',
+          this.props.stockInformation.primaryExchange
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          ' 52 Week High: ',
+          stockInformation.week52High,
+          ' '
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          ' 52 Week Low: ',
+          stockInformation.week52Low,
+          ' '
+        )
+      );
+    }
+  }]);
+
+  return StockData;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    stockInformation: state.stockInformationReducer
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(StockData);
+
+/***/ }),
+
 /***/ "./app/components/root.js":
 /*!********************************!*\
   !*** ./app/components/root.js ***!
@@ -334,6 +513,10 @@ var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_module
 var _InputStockQuote = __webpack_require__(/*! ./InputStockQuote */ "./app/components/InputStockQuote.js");
 
 var _InputStockQuote2 = _interopRequireDefault(_InputStockQuote);
+
+var _Home = __webpack_require__(/*! ./Home */ "./app/components/Home.js");
+
+var _Home2 = _interopRequireDefault(_Home);
 
 var _Login = __webpack_require__(/*! ./Login */ "./app/components/Login.js");
 
@@ -362,7 +545,7 @@ var Root = function (_Component) {
 			return _react2.default.createElement(
 				_reactRouterDom.BrowserRouter,
 				null,
-				_react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _InputStockQuote2.default }),
+				_react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default }),
 				_react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _Login2.default })
 			);
 		}
@@ -431,12 +614,9 @@ var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js"
 
 var _stockReducers = __webpack_require__(/*! ./stocks/stockReducers */ "./app/redux/stocks/stockReducers.js");
 
-var _stockReducers2 = _interopRequireDefault(_stockReducers);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var rootReducer = (0, _redux.combineReducers)({
-  stockReducer: _stockReducers2.default
+  stockInformationReducer: _stockReducers.stockInformationReducer,
+  stockHistoricalPriceReducer: _stockReducers.stockHistoricalPriceReducer
 });
 
 exports.default = rootReducer;
@@ -534,11 +714,12 @@ var SET_STOCK_HISTORICAL_PRICE = exports.SET_STOCK_HISTORICAL_PRICE = 'SET_STOCK
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.stockHistoricalPriceReducer = exports.stockInformationReducer = undefined;
 
 var _stockConstants = __webpack_require__(/*! ./stockConstants */ "./app/redux/stocks/stockConstants.js");
 
-var stockReducer = function stockReducer() {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+var stockInformationReducer = exports.stockInformationReducer = function stockInformationReducer() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 	var action = arguments[1];
 
 	switch (action.type) {
@@ -549,7 +730,17 @@ var stockReducer = function stockReducer() {
 	}
 };
 
-exports.default = stockReducer;
+var stockHistoricalPriceReducer = exports.stockHistoricalPriceReducer = function stockHistoricalPriceReducer() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	var action = arguments[1];
+
+	switch (action.type) {
+		case _stockConstants.SET_STOCK_HISTORICAL_PRICE:
+			return action.stockPriceData;
+		default:
+			return state;
+	}
+};
 
 /***/ }),
 

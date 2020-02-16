@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 
 class StockData extends Component {
 	render() {
-		// console.log('this is the PROPS =>', this.props);
-    const { stockInformation, companyInformation } = this.props;
-    		console.log('this is the PROPS =>', this.props);
-		if (!this.props.stockInformation && !this.props.companyInformation) {
+    const { stockInformation } = this.props;
+		if (!this.props.stockInformation) {
 			return <div> Search the stock </div>;
 		}
 		return (
@@ -28,8 +26,8 @@ class StockData extends Component {
 const mapStateToProps = state => {
 	return {
 		stockInformation: state.stockInformationReducer,
-		companyInformation: state.companyReducer
 	};
 };
+
 
 export default connect(mapStateToProps)(StockData);

@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import {stockInformationReducer, stockHistoricalPriceReducer } from './stocks/stockReducers'; 
+import {stockInformationReducer, stockHistoricalPriceReducer, companyReducer } from './stocks/stockReducers'; 
 
 const rootReducer = combineReducers({
   stockInformationReducer,
-  stockHistoricalPriceReducer
+  stockHistoricalPriceReducer,
+  companyReducer
 })
 
 export default rootReducer;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { findStockData, findStockPrice } from '../redux/stocks/stockActions';
+import { findStockData, findStockPrice, findCompanyData } from '../redux/stocks/stockActions';
 import { connect } from 'react-redux';
 
 class InputStockQuote extends Component {
@@ -16,6 +16,7 @@ class InputStockQuote extends Component {
 		event.preventDefault();
 		this.props.fetchStockData(this.state);
 		this.props.fetchStockPrice(this.state);
+		this.props.fetchCompanyData(this.state);
 	};
 	render() {
 		return (
@@ -34,17 +35,12 @@ class InputStockQuote extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		stockInformation: state.stockData
-	};
-};
-
 const mapDispatchToProps = dispatch => {
 	return {
 		fetchStockData: stockSymbol => dispatch(findStockData(stockSymbol)),
-		fetchStockPrice: stockSymbol => dispatch(findStockPrice(stockSymbol))
+		fetchStockPrice: stockSymbol => dispatch(findStockPrice(stockSymbol)),
+		fetchCompanyData: stockSymbol => dispatch(findCompanyData(stockSymbol))
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(InputStockQuote);
+export default connect(null, mapDispatchToProps)(InputStockQuote);

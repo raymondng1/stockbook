@@ -14,9 +14,8 @@ class InputStockQuote extends Component {
 	};
 	onSubmit = event => {
 		event.preventDefault();
-		this.props.fetchStockData(this.state);
 		this.props.fetchStockPrice(this.state);
-		this.props.fetchCompanyData(this.state);
+		this.props.fetchStockData(this.state);
 	};
 	render() {
 		return (

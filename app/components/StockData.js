@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 class StockData extends Component {
 	render() {
-		console.log('this is the PROPS =>', this.props);
+		// console.log('this is the PROPS =>', this.props);
     const { stockInformation, companyInformation } = this.props;
-    
+    		console.log('this is the PROPS =>', this.props);
 		if (!this.props.stockInformation && !this.props.companyInformation) {
 			return <div> Search the stock </div>;
 		}
@@ -19,8 +19,6 @@ class StockData extends Component {
 				</div>
 				<div> 52 Week High: ${stockInformation.week52High} </div>
 				<div> 52 Week Low: ${stockInformation.week52Low} </div>
-				<div> website: {companyInformation.website} </div>
-				<div> description: {companyInformation.description}</div>
 				<button> Add to Watch List </button>
 			</main>
 		);

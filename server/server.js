@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const { User } = require('./db/models');
+const { User , Session} = require('./db/models');
 const cookieParser = require('cookie-parser'); //'uuid='
 
 // //console logging middleware to see this
@@ -34,6 +34,71 @@ app.get('*', (req, res) => {
 //     })
 //   }
 // })
+
+app.use((req, res, next) => {
+  //The user doesn't have a session cookie so we create a session
+  if (!req.cookies['session_id']) {
+    Session.create()
+      .then(session =>
+        User.create({
+          userType: 'Guest',
+          sessionId: session.id
+        })
+      )
+      // because this is a new session we create a guest user and give them the new session id
+      .then(guest => {
+        res.cookie('session_id', guest.dataValues.sessionId, {
+          path: '/',
+          expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
+        });
+        req.user = guest;
+        next();
+      })
+      .catch(e => {
+        console.error(e);
+        res.status(404).redirect('/error');
+      });
+  } else {
+    // the user has an active session id (their cookie)
+    // find the user by session id and add it to req
+    User.findOne({
+      where: {
+        sessionId: req.cookies['session_id']
+      }
+    })
+      .then(user => {
+        //console.log(user);
+        if (!user) {
+          Session.create()
+            .then(session =>
+              User.create({
+                userType: 'Guest',
+                sessionId: session.id
+              })
+            )
+            .then(guest => {
+              res.cookie('session_id', guest.dataValues.sessionId, {
+                path: '/',
+                expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
+              });
+              req.user = guest;
+              next();
+            })
+            .catch(e => {
+              console.error(e);
+              res.status(404).redirect('/error');
+            });
+        } else {
+          req.user = user.dataValues;
+          next();
+        }
+      })
+      .catch(e => {
+        console.error(e);
+        res.status(404).redirect('/error');
+      });
+  }
+});
 
 app.use('/api', require('./api'));
 //Error-handling endware

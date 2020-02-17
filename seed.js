@@ -4,12 +4,16 @@ const users = [
 	{
 		email: 'raymond.ng47@gmail.com',
 		password: '123',
-		userType: 'customer'
+		userType: 'customer',
+		firstName: 'Raymond',
+		lastName: 'Ng'
 	},
 	{
 		email: 'fakeemail@gmail.com',
 		password: '123',
-		userType: 'customer'
+		userType: 'customer',
+		firstName: 'fake',
+		lastName: 'lastname'
 	}
 ];
 

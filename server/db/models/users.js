@@ -17,6 +17,12 @@ const User = db.define('users', {
   },
   userType:{
     type: STRING, 
+  },
+  firstName:{
+    type:STRING,
+  },
+  lastName:{
+    type:STRING
   }
 });
 

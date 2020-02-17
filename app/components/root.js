@@ -16,9 +16,9 @@ class Root extends Component {
 		return (
 			<Router>
 				<Switch>
-					<Route path='/home/:id' component={Homepage} />
+					<Route path='/home' component={Homepage} />
 					<Route path='/login' component={Login} />
-					{/* <Route path='/news' component={NewsData} /> */}
+					{/* <Route path='/news/:id' component={NewsData} /> */}
 					{/* <Route path='/watchlist' component={}/>  */}
 				</Switch>
 			</Router>

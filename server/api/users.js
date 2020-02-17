@@ -3,6 +3,24 @@ const router = express.Router();
 const { User } = require('../db/models');
 //searching database for req.body;
 
+
+router.get('/session/:sessionId', (req, res, next) => {
+  const { sessionId } = req.params;
+  User.findOne({
+    where: {
+      sessionId
+    }
+  })
+    .then(user => {
+      res.status(200).send(user);
+    })
+    .catch(e => {
+      res.status(400);
+      next(e);
+    });
+});
+
+
 router.post('/login', (req, res, next) => {
 	const { email, password } = req.body;
 	User.findOne({
@@ -18,7 +36,8 @@ router.post('/login', (req, res, next) => {
 					path: '/',
 					expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
 				});
-				return res.status(202).send('Success!');
+				//will send user credentials when the login is a success
+				return res.status(202).send(userOrNull);
 			}
 			//if can't find user is not a catch error but an else statement
 			res.status(401).send('Failure');

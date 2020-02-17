@@ -1,4 +1,4 @@
-import { LOGIN_ERROR, LOGIN_SUCCCESS } from './userConstants';
+import { LOGIN_ERROR, LOGIN_SUCCCESS, SET_USER } from './userConstants';
 
 export const authenticationReducer = (
 	state = { authError: null, logInStatus: null },
@@ -20,4 +20,13 @@ export const authenticationReducer = (
 		default:
 			return state;
 	}
+};
+
+export const userReducer = (state = {}, action) => {
+  switch (action.type) {
+    case SET_USER:
+      return action.user;
+    default:
+      return state;
+  }
 };

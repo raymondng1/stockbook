@@ -9,13 +9,18 @@ import {
 import InputStockQuote from './InputStockQuote';
 import Homepage from './Home';
 import Login from './Login';
+import NewsData from './NewsData';
 
 class Root extends Component {
 	render() {
 		return (
 			<Router>
-				<Route path='/' component={Homepage} />
-				<Route path='/login' component={Login} />
+				<Switch>
+					<Route path='/home' component={Homepage} />
+					<Route path='/login' component={Login} />
+					{/* <Route path='/news' component={NewsData} /> */}
+					{/* <Route path='/watchlist' component={}/>  */}
+				</Switch>
 			</Router>
 		);
 	}

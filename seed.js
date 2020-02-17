@@ -2,7 +2,7 @@ const { User, WatchList } = require('./server/db/models');
 
 const users = [
 	{
-		email: 'raymond.ng47@gmail',
+		email: 'raymond.ng47@gmail.com',
 		password: '123'
 	},
 	{

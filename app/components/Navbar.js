@@ -7,8 +7,9 @@ class NavigationBar extends Component {
 			<Navbar bg='dark' style={{ height: '3rem' }}>
 				<Nav style={{color:'white'}}>
 					<Nav.Link> Search Stock </Nav.Link>
-					<Nav.Link> Tracking </Nav.Link>
-					<Nav.Link> News </Nav.Link>
+					<Nav.Link href={'/watchlist'}> Tracking </Nav.Link>
+					<Nav.Link href={'/news'}> News </Nav.Link>
+					<Nav.Link href={'/login'}> Login </Nav.Link>
 				</Nav>
 			</Navbar>
 		);

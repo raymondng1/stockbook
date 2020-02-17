@@ -1,3 +1,6 @@
+import axios from 'axios';
+import {LOGIN_SUCCCESS, LOGIN_ERROR} from './userConstants'; 
+
 export const logInSuccess = () => {
   return {
     type: LOGIN_SUCCCESS
@@ -9,7 +12,7 @@ export const logInSuccess = () => {
 export const logInUser = ({ email, password }) => {
   return dispatch => {
     return axios
-      .post(`/api/users/login`, { email, password })
+      .post(`/api/user/login`, { email, password })
       .then(user => {
         dispatch(logInSuccess());
       })

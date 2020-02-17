@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { Form, Button, Col, Nav } from 'react-bootstrap';
-import { logInUser } from './../redux/users/userActions';
+import { logInUser } from '../redux/users/userActions';
+import { connect } from 'react-redux';
 
 class Login extends Component {
 	state = {
 		email: '',
 		password: ''
-	};
+  };
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+  onSubmit = event => {
+    event.preventDefault();
+    this.props.logIn(this.state);
+  };
 	render() {
 		return (
 			<Form>

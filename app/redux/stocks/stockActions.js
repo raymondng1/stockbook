@@ -46,6 +46,7 @@ export const findStockPrice = stockSymbol => {
 	};
 };
 
+
 export const setCompanyInformation = companyData => {
 	return {
 		type: SET_COMPANY_INFORMATION,
@@ -62,3 +63,18 @@ export const findCompanyData = stockSymbol => {
 		.catch( e => console.log(`Can't find the company information`,e))
 	}
 }
+
+//Thunks for logging in 
+
+export const logInUser = ({ email, password }) => {
+  return dispatch => {
+    return axios
+      .post(`/api/users/login`, { email, password })
+      .then(user => {
+        dispatch(logInSuccess());
+      })
+      .catch((e) => {
+				console.log('Failed logging in')
+      });
+  };
+};

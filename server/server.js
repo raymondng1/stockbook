@@ -22,25 +22,6 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.post('/login', (req, res, next) => {
-	const { email, password } = req.body;
-	User.findOne({
-		where: {
-			email,
-			password
-		}
-	})
-		.then(userOrNull => {
-			if (userOrNull) {
-				res.status(202).send('Success!');
-			}
-			//if can't find user is not a catch error but an else statement
-			res.status(401).send('Failure');
-		})
-		.catch(e => {
-			res.status(500).send('Internal Error!');
-		});
-});
 
 //Error-handling endware
 app.use('/', (err, req, res, next) => {

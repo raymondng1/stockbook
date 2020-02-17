@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { findStockData, findStockPrice, findCompanyData } from '../redux/stocks/stockActions';
+import { Form, Button, Navbar } from 'react-bootstrap';
+import {
+	findStockData,
+	findStockPrice,
+	findCompanyData
+} from '../redux/stocks/stockActions';
 import { connect } from 'react-redux';
 
 class InputStockQuote extends Component {
@@ -20,17 +24,21 @@ class InputStockQuote extends Component {
 	};
 	render() {
 		return (
-			<Form>
-				<Form.Group>
-					<Form.Label> Stock Quote </Form.Label>
-					<Form.Control
-						name='stockSymbol'
-						placeholder='Enter Stock Symbol'
-						onChange={this.handleChange}
-					/>
-					<Button onClick={this.onSubmit}> Search </Button>
-				</Form.Group>
-			</Form>
+				<Form inline>
+					<Form.Group>
+						{/* <Form.Label> Stock Quote </Form.Label> */}
+						<Form.Control
+							name='stockSymbol'
+							placeholder='Enter Stock Symbol'
+							className=' mr-sm-2'
+							onChange={this.handleChange}
+						/>
+						<Button onClick={this.onSubmit} style={{ backgroundColor: 'gray' }}>
+							{' '}
+							Search{' '}
+						</Button>
+					</Form.Group>
+				</Form>
 		);
 	}
 }

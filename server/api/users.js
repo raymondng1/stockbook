@@ -4,23 +4,6 @@ const { User } = require('../db/models');
 //searching database for req.body;
 
 
-router.get('/session/:sessionId', (req, res, next) => {
-  const { sessionId } = req.params;
-  User.findOne({
-    where: {
-      sessionId
-    }
-  })
-    .then(user => {
-      res.status(200).send(user);
-    })
-    .catch(e => {
-      res.status(400);
-      next(e);
-    });
-});
-
-
 router.post('/login', (req, res, next) => {
 	const { email, password } = req.body;
 	User.findOne({

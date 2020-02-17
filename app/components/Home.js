@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import NavigationBar from './Navbar';
 import InputStockQuote from './InputStockQuote';
 import StockData from './StockData';
@@ -7,20 +8,26 @@ import CompanyData from './CompanyData';
 
 class Homepage extends Component {
 	render() {
+		console.log('this is the props', this.props);
 		return (
 			<main>
 				<NavigationBar />
-				<br/>
+				<br />
 				<InputStockQuote />
-				<br/>
-				<div style={{display:'flex'}}> 
-				<StockChart />
-				<StockData />
+				<br />
+				<div style={{ display: 'flex' }}>
+					<StockChart />
+					<StockData />
 				</div>
-        <CompanyData/>
+				<CompanyData />
 			</main>
 		);
 	}
 }
+const mapStateToProps = state => {
+	return {
+		user: state.userReducer
+	};
+};
 
-export default Homepage;
+export default connect(mapStateToProps)(Homepage)

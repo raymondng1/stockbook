@@ -20,6 +20,7 @@ class Root extends Component {
 					<Route path='/login' component={Login} />
 					{/* <Route path='/news/:id' component={NewsData} /> */}
 					{/* <Route path='/watchlist' component={}/>  */}
+					<Redirect to='/login' />
 				</Switch>
 			</Router>
 		);

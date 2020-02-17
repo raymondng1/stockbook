@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 
 class StockData extends Component {
 	addToTracker = event => {
-		
+
 	}
 	render() {
 		const { stockInformation } = this.props;
@@ -46,7 +46,8 @@ class StockData extends Component {
 
 const mapStateToProps = state => {
 	return {
-		stockInformation: state.stockInformationReducer
+		stockInformation: state.stockInformationReducer,
+		user: state.userReducer
 	};
 };
 

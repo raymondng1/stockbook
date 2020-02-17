@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 import {
 	stockInformationReducer,
 	stockHistoricalPriceReducer,
-	companyReducer
+	companyReducer,
+	stockNewsReducer
 } from './stocks/stockReducers';
 import { authenticationReducer, userReducer } from './users/userReducers';
 import { watchListReducer } from './watchlist/watchListReducers';
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
 	companyReducer,
 	authenticationReducer,
 	userReducer,
-	watchListReducer 
+	watchListReducer,
+	stockNewsReducer
 });
 
 export default rootReducer;

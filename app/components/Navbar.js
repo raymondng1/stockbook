@@ -14,7 +14,7 @@ class NavigationBar extends Component {
 				<Nav style={{ color: 'white' }}  className="justify-content-end">
 					<Nav.Link href={'/home'}> Search Stock </Nav.Link>
 					<Nav.Link href={'/watchlist'}> Tracking </Nav.Link>
-					<Nav.Link href={'/news'}> Recent News </Nav.Link>
+					<Nav.Link href={'/recentnews'}> Recent News </Nav.Link>
 					<Nav.Link href={'/'}> Logout </Nav.Link> 
 				</Nav>
 			</Navbar>

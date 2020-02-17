@@ -59,26 +59,12 @@ export const findCompanyData = stockSymbol => {
 		axios
 			.post(`/api/stocks/companyinfo`, stockSymbol)
 			.then(res => {
+		
 				dispatch(setCompanyInformation(res.data));
 			})
 			.catch(e => console.log(`Can't find the company information`, e));
 	};
 };
-
-//Thunks for logging in
-
-// export const logInUser = ({ email, password }) => {
-// 	return dispatch => {
-// 		axios
-// 			.post(`/api/users/login`, { email, password })
-// 			.then(user => {
-// 				dispatch(logInSuccess());
-// 			})
-// 			.catch(e => {
-// 				console.log('Failed logging in');
-// 			});
-// 	};
-// };
 
 export const setRecentNews = arrayOfObjects => {
 	return {
@@ -87,15 +73,29 @@ export const setRecentNews = arrayOfObjects => {
 	};
 }
 
-export const fetchNewsData = stockSymbol => {
-	console.log('these are the first company ' , stockSymbol)
-	return dispatch =>
-		axios
-			.post(`/api/stocks/news`, {stockSymbol})
-			.then(res => {
-				dispatch(setRecentNews(res.data));
-			})
-			.catch(e => {
-				console.log(e);
-			});
-};
+// export const fetchNewsData = stockSymbol => {
+// 	console.log('these are the first company ' , stockSymbol)
+// 	return dispatch =>
+// 		axios
+// 			.post(`/api/stocks/news`, {stockSymbol})
+// 			.then(res => {
+// 				console.log('this is the RESPONSE ', res.data)
+// 				dispatch(setRecentNews(res.data));
+// 			})
+// 			.catch(e => {
+// 				console.log(e);
+// 			});
+// };
+
+// export const fetchRecentNewsData = () => {
+// 	return dispatch =>
+// 		axios
+// 			.get(`/api/stocks/recentnews`)
+// 			.then(res => {
+// 				dispatch(setRecentNews(res.data));
+// 			})
+// 			.catch(e => {
+// 				console.log(e);
+// 			});
+// };
+

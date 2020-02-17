@@ -11,7 +11,7 @@ class CompanyData extends Component {
 		return (
 			<div>
         <span> 
-          Website: <Nav.Link> {companyInformation.website} </Nav.Link>
+          Website: <Nav.Link > {companyInformation.website} </Nav.Link>
         </span>
 				<div> Description: {companyInformation.description} </div>
 				<div> CEO: {companyInformation.CEO}</div>

@@ -15,7 +15,8 @@ class Login extends Component {
 	};
 	onSubmit = event => {
 		event.preventDefault();
-		this.props.logIn(this.state).then(() => this.props.history.push('/home'));
+		this.props.logIn(this.state);
+		this.props.history.push('/home')
 	};
 	render() {
 		const { logInStatus } = this.props.userLoginStatus;

@@ -1,24 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import NavigationBar from './Navbar';
+import axios from 'axios';
+import { fetchWatchListStocks } from '.././redux/watchlist/watchListActions';
 
 class WatchList extends Component {
-  componentDidMount(){
-    this.props.userWatchList 
-  }
-  render(){
-    console.log('these are the props', this.props.userWatchList )
-    return ( 
-      <div> 
-        <div> what is good  </div>
-      </div>
-    )
-  }
+	componentDidMount() {
+		const userIdCookie = document.cookie.replace('uuid=', '');
+		this.props.fetchWatchListStocks(userIdCookie);
+	}
+	render() {
+		console.log('these are the props', this.props);
+		return (
+			<div>
+				<NavigationBar />
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => {
 	return {
-		userWatchList: state.watchListReducer
+		userWatchList: state.watchListReducer,
+		user: state.userReducer
 	};
 };
 
-export default connect(mapStateToProps)(WatchList);
+const mapDispatchToProps = dispatch => {
+	return {
+		fetchWatchListStocks: userId => dispatch(fetchWatchListStocks(userId))
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WatchList);

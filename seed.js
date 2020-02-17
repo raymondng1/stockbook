@@ -17,20 +17,20 @@ const users = [
 	}
 ];
 
-const watchlists = [
-	{
-		stockTicker: 'FB',
-		companyName: 'FACEBOOK'
-	},
-	{
-		stockTicker: 'TSLA',
-		companyName: 'TESLA'
-	}
-];
+// const watchlists = [
+// 	{
+// 		stockTicker: 'FB',
+// 		companyName: 'FACEBOOK'
+// 	},
+// 	{
+// 		stockTicker: 'TSLA',
+// 		companyName: 'TESLA'
+// 	}
+// ];
 
 const seed = async () => {
 	await Promise.all(users.map(user => User.create(user)));
-	await Promise.all(watchlists.map(stocks => WatchList.create(stocks)));
+	// await Promise.all(watchlists.map(stocks => WatchList.create(stocks)));
 };
 
 module.exports = seed;

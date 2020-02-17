@@ -4,6 +4,9 @@ import { Button } from 'react-bootstrap';
 import { postToDataBase } from '.././redux/watchlist/watchListActions';
 
 class StockData extends Component {
+	// componentDidMount(){
+	// 	this.props.history.push('/watchlist')
+	// }
 	addToTracker = (stockTicker, companyName, userId) => {
 		this.props.AddToWatchList({ stockTicker, companyName, userId });
 	};

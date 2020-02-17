@@ -15,6 +15,18 @@ router.get('/', (req, res, next) => {
 		});
 });
 
+router.get('/:userId', (req, res, next) => {
+	WatchList.findAll()
+		.then(data => {
+			console.log('this is the data', data);
+			res.status(200).send(data);
+		})
+		.catch(e => {
+			res.status(404);
+			next();
+		});
+});
+
 router.post('/', (req, res, next) => {
   console.log('this is the request body', req.body)
 	WatchList.create(req.body)

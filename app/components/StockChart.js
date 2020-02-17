@@ -17,13 +17,13 @@ class StockChart extends Component {
 	render() {
 		//pass formater to the y-axis to add '$' next to the value
 		const formatter = value => `$${value}`;
-		const { stockHistoricalPrices } = this.props;
+		const { stockHistoricalPrices, stockInformation } = this.props;
 		if (!stockHistoricalPrices) {
 			return <div> insert chart </div>;
 		}
 		return (
 			<main>
-				<div> This is the chart </div>
+				<div style={{"fontWeight":'bold'}}> {this.props.stockInformation.companyName} Historical Cost </div>
 				<AreaChart
 					width={700}
 					height={300}
@@ -46,7 +46,8 @@ class StockChart extends Component {
 
 const mapStateToProps = state => {
 	return {
-		stockHistoricalPrices: state.stockHistoricalPriceReducer
+		stockHistoricalPrices: state.stockHistoricalPriceReducer,
+		stockInformation: state.stockInformationReducer
 	};
 };
 

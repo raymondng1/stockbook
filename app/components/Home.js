@@ -10,9 +10,13 @@ class Homepage extends Component {
 		return (
 			<main>
 				<NavigationBar />
+				<br/>
 				<InputStockQuote />
+				<br/>
+				<div style={{display:'flex'}}> 
 				<StockChart />
 				<StockData />
+				</div>
         <CompanyData/>
 			</main>
 		);

@@ -10,9 +10,9 @@ class NavigationBar extends Component {
 			return <div> insert chart </div>;
 		}
 		return (
-			<Navbar bg='dark' style={{ height: '3rem' } }>
-				<Nav style={{ color: 'white' }} className='mr-auto'>
-					<Nav.Link> Search Stock </Nav.Link>
+			<Navbar bg='dark' style={{ height: '3rem' } }  className="justify-content-end">
+				<Nav style={{ color: 'white' }}  className="justify-content-end">
+					<Nav.Link > Search Stock </Nav.Link>
 					<Nav.Link href={'/watchlist'}> Tracking </Nav.Link>
 					<Nav.Link href={'/news'}> News </Nav.Link>
 					<Nav.Link> Logout </Nav.Link> 

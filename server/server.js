@@ -3,6 +3,12 @@ const app = express();
 const path = require('path');
 const User = require('./db/models/users');
 
+//console logging middleware to see this 
+app.use((req,res,next) => {
+  console.log(`Request made to ${req.path}`)
+  next()
+})
+
 //middleware for parsing
 app.use(express.json());
 

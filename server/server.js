@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const User = require('./db/models/users');
+const { User } = require('./db/models');
 const cookieParser = require('cookie-parser'); //'uuid='
 
 // //console logging middleware to see this
@@ -24,16 +24,16 @@ app.get('*', (req, res) => {
 });
 
 //middleware for seeing any request that comes in that has a cookie/uuid, will look up if that uuid is in our db, if it is will attach this property to the request and say it is true, every express handler after this will look at req.loggedin
-app.use((req,res,next) => {
-  if(req.cookies.uuid){
-    User.findByPk(req.cookies.uuid)
-    .then(userOrNull => {
-      if(userOrNull){
-        next()
-      }
-    })
-  }
-})
+// app.use((req,res,next) => {
+//   if(req.cookies.uuid){
+//     User.findByPk(req.cookies.uuid)
+//     .then(userOrNull => {
+//       if(userOrNull){
+//         next()
+//       }
+//     })
+//   }
+// })
 
 app.use('/api', require('./api'));
 //Error-handling endware

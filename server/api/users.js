@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../db/models');
+const { User } = require('../db/models');
 //searching database for req.body;
+
 router.post('/login', (req, res, next) => {
 	const { email, password } = req.body;
 	User.findOne({
@@ -13,7 +14,7 @@ router.post('/login', (req, res, next) => {
 		.then(userOrNull => {
 			//if true/foundUser shove a cookie
 			if (userOrNull) {
-				return res.cookie('uuid', userOrNull.id, {
+				res.cookie('uuid', userOrNull.id, {
 					path: '/',
 					expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
 				});

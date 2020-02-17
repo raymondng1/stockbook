@@ -10,6 +10,9 @@ const WatchList = db.define('watchlist', {
 	},
 	stockTicker: {
 		type: STRING
+	},
+	companyName:{
+		type: STRING
 	}
 });
 

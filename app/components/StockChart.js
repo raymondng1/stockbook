@@ -23,7 +23,7 @@ class StockChart extends Component {
 		}
 		return (
 			<main>
-				<div style={{"fontWeight":'bold'}}> {this.props.stockInformation.companyName} Historical Cost </div>
+				<div style={{"fontWeight":'bold'}}> {this.props.stockInformation.companyName} </div>
 				<AreaChart
 					width={700}
 					height={300}

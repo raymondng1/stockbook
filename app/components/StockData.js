@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 
 class StockData extends Component {
+	addToTracker = event => {
+		
+	}
 	render() {
 		const { stockInformation } = this.props;
 		if (!this.props.stockInformation) {
@@ -28,11 +32,13 @@ class StockData extends Component {
 				</div>
 				<div>
 					<div style={{ fontWeight: 'bold' }}>
-						{stockInformation.latestTime} <span> Market: {stockInformation.latestSource}</span>
+						{stockInformation.latestTime}{' '}
+						<span> Market: {stockInformation.latestSource}</span>
 					</div>
 					<div> Price: ${stockInformation.latestPrice}</div>
 				</div>
-				<button> Add to Watch List </button>
+				<br/>
+				<Button variant='dark'>Add to Tracker</Button>
 			</main>
 		);
 	}

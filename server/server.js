@@ -9,23 +9,19 @@ const cookieParser = require('cookie-parser'); //'uuid='
 // 	console.log(`Request made to ${req.path}`);
 // 	next();
 // });
-
 app.use(cookieParser());
-
-//middleware for parsing for post/update
 app.use(express.json());
 
 //middleware for webpack to send the static html file
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.use('/api', require('./api'));
+//middleware for seeing any request that comes in that has a cookie/uuid, will look up if that uuid is in our db, if it is will attach this property to the request and say it is true, every express handler after this will look at req.loggedin
+
 // Send index.html for any other requests , "*" -will send our react application
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../public/index.html'));
 });
-
-//middleware for seeing any request that comes in that has a cookie/uuid, will look up if that uuid is in our db, if it is will attach this property to the request and say it is true, every express handler after this will look at req.loggedin
-
-app.use('/api', require('./api'));
 
 app.use((req, res, next) => {
 	if (req.cookies.uuid) {

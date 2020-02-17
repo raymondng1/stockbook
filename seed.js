@@ -19,10 +19,12 @@ const users = [
 
 const watchlists = [
 	{
-		stockTicker: 'FB'
+		stockTicker: 'FB',
+		companyName: 'FACEBOOK'
 	},
 	{
-		stockTicker: 'TSLA'
+		stockTicker: 'TSLA',
+		companyName: 'TESLA'
 	}
 ];
 

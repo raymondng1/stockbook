@@ -3,7 +3,6 @@ const router = express.Router();
 const { User } = require('../db/models');
 //searching database for req.body;
 
-
 router.post('/login', (req, res, next) => {
 	const { email, password } = req.body;
 	User.findOne({

@@ -14,6 +14,9 @@ const User = db.define('users', {
   },
   password:{
     type: STRING
+  },
+  userType:{
+    type: STRING, 
   }
 });
 

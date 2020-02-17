@@ -3,11 +3,13 @@ const { User, WatchList } = require('./server/db/models');
 const users = [
 	{
 		email: 'raymond.ng47@gmail.com',
-		password: '123'
+		password: '123',
+		userType: 'customer'
 	},
 	{
 		email: 'fakeemail@gmail.com',
-		password: '123'
+		password: '123',
+		userType: 'customer'
 	}
 ];
 

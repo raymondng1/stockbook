@@ -9,10 +9,10 @@ export const logInSuccess = () => {
 
 //Thunks for logging in 
 
-export const logInUser = ({ email, password }) => {
+export const logInUser = ({email, password}) => {
   return dispatch => {
     return axios
-      .post(`/api/user/login`, { email, password })
+      .post(`/api/user/login`, {email, password})
       .then(user => {
         dispatch(logInSuccess());
       })

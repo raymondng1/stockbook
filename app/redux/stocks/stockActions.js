@@ -59,7 +59,6 @@ export const findCompanyData = stockSymbol => {
 		axios
 			.post(`/api/stocks/companyinfo`, stockSymbol)
 			.then(res => {
-		
 				dispatch(setCompanyInformation(res.data));
 			})
 			.catch(e => console.log(`Can't find the company information`, e));
@@ -87,15 +86,15 @@ export const setRecentNews = arrayOfObjects => {
 // 			});
 // };
 
-// export const fetchRecentNewsData = () => {
-// 	return dispatch =>
-// 		axios
-// 			.get(`/api/stocks/recentnews`)
-// 			.then(res => {
-// 				dispatch(setRecentNews(res.data));
-// 			})
-// 			.catch(e => {
-// 				console.log(e);
-// 			});
-// };
+export const fetchRecentNewsData = () => {
+	return dispatch =>
+		axios
+			.get(`/api/stocks/recentnews`)
+			.then(res => {
+				dispatch(setRecentNews(res.data));
+			})
+			.catch(e => {
+				console.log(e);
+			});
+};
 

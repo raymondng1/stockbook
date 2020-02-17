@@ -10,7 +10,7 @@ import { Nav } from 'react-bootstrap';
 
 class NewsComponent extends Component {
 	componentDidMount() {
-		this.props.fetchNewsRecentData();
+		this.props.fetchNewsRecentData()
 	}
 	render() {
 		const { recentNews } = this.props;
@@ -32,7 +32,7 @@ class NewsComponent extends Component {
 						<img src={article.imageUrl} />
 						<div> Summary: {article.summary}</div>
 						<div> Source: {article.source} </div>
-						<Nav.Link> {article.qmUrl} </Nav.Link>
+						<Nav.Link href={article.qmUrl}> {article.qmUrl} </Nav.Link>
 					</main>
 				))}
 			</main>

@@ -1,0 +1,1 @@
+export const POST_TO_WATCHLIST = 'POST_TO_WATCHLIST';

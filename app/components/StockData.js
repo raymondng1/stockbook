@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 
 class StockData extends Component {
 	addToTracker = event => {
+		event.preventDefault();
 
 	}
 	render() {
@@ -51,4 +52,10 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(StockData);
+const mapDispatchToProps = state => {
+	return {
+		AddToWatchList: data => dispatch(PostToWatchList(data))
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StockData);

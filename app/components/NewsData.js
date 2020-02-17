@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavigationBar from './Navbar';
+import axios from 'axios';
+import { fetchWatchListStocks } from '.././redux/watchlist/watchListActions';
+import { fetchNewsData } from '.././redux/stocks/stockActions';
 
-class NewsData extends Component {
+class StockNewsData extends Component {
 	componentDidMount() {
-		this.props.userWatchList;
+		const userIdCookie = document.cookie.replace('uuid=', '');
+		this.props
+			.fetchWatchListStocks(userIdCookie)
+			.then(res => {
+				let arrOfStockSymbols = res.stockWatchList.map(stockSymbol => stockSymbol.stockTicker) 
+				this.props.fetchNewsData(arrOfStockSymbols)
+			})
+			.catch(e => console.log(e))
 	}
 	render() {
 		console.log('these are the props', this.props);
+		const { userWatchList } = this.props;
+
 		return (
 			<div>
 				<NavigationBar />
-				<div> what is good </div>
-				<div> THIS IS THE NEWS</div>
+				<br />
+				<h2> Recents News: </h2>
 			</div>
 		);
 	}
@@ -21,13 +33,15 @@ class NewsData extends Component {
 const mapStateToProps = state => {
 	return {
 		userWatchList: state.watchListReducer,
+		user: state.userReducer
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		// fetchNewsArticle: userId => dispatch(fetchWatchListStocks(userId))
+		fetchWatchListStocks: userId => dispatch(fetchWatchListStocks(userId)),
+		fetchNewsData: stockSymbols => dispatch(fetchNewsData(stockSymbols))
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsData);
+export default connect(mapStateToProps, mapDispatchToProps)(StockNewsData);

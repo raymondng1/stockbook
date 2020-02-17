@@ -6,7 +6,6 @@ router.use('/stocks', require('./stocks'));
 router.use('/users', require('./users'));
 router.use('/watchlist', require('./watchlist'));
 
-//sandbox.iexapis.com/stable/stock/${stockSymbol}/chart/max?token=${process.env.SANDBOX_PUBLISHABLE_KEY}
 router.use((req, res, next) => {
   const err = new Error('API route not found');
   res.status(404);

@@ -25,7 +25,8 @@ export const fetchWatchListStocks = userId => {
 	return dispatch => {
 		return axios.get(`/api/watchlist/${userId}`)
 		.then(foundStocks => {
-			dispatch(setWatchList(foundStocks.data));
+			return dispatch(setWatchList(foundStocks.data));
 		})
 	}
 }
+

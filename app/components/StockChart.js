@@ -25,8 +25,8 @@ class StockChart extends Component {
 			<main>
 				<div style={{"fontWeight":'bold'}}> {this.props.stockInformation.companyName} </div>
 				<AreaChart
-					width={700}
-					height={300}
+					width={1000}
+					height={400}
 					//prices from API from the redux store
 					data={stockHistoricalPrices}
 					margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>

@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
 	SET_STOCK_DATA,
 	SET_STOCK_HISTORICAL_PRICE,
-	SET_COMPANY_INFORMATION
+	SET_COMPANY_INFORMATION,
+	SET_RECENT_NEWS
 } from './stockConstants';
 
 //Action creators for getting/fetching data with thunk middleware in the '../../store.js'
@@ -46,7 +47,6 @@ export const findStockPrice = stockSymbol => {
 	};
 };
 
-
 export const setCompanyInformation = companyData => {
 	return {
 		type: SET_COMPANY_INFORMATION,
@@ -56,25 +56,46 @@ export const setCompanyInformation = companyData => {
 
 export const findCompanyData = stockSymbol => {
 	return dispatch => {
-		axios.post(`/api/stocks/companyinfo`, stockSymbol)
-		.then(res => {
-			dispatch(setCompanyInformation(res.data))
-		})
-		.catch( e => console.log(`Can't find the company information`,e))
-	}
+		axios
+			.post(`/api/stocks/companyinfo`, stockSymbol)
+			.then(res => {
+				dispatch(setCompanyInformation(res.data));
+			})
+			.catch(e => console.log(`Can't find the company information`, e));
+	};
+};
+
+//Thunks for logging in
+
+// export const logInUser = ({ email, password }) => {
+// 	return dispatch => {
+// 		axios
+// 			.post(`/api/users/login`, { email, password })
+// 			.then(user => {
+// 				dispatch(logInSuccess());
+// 			})
+// 			.catch(e => {
+// 				console.log('Failed logging in');
+// 			});
+// 	};
+// };
+
+export const setRecentNews = arrayOfObjects => {
+	return {
+		type: SET_RECENT_NEWS,
+		arrayOfObjects
+	};
 }
 
-//Thunks for logging in 
-
-export const logInUser = ({ email, password }) => {
-  return dispatch => {
-    return axios
-      .post(`/api/users/login`, { email, password })
-      .then(user => {
-        dispatch(logInSuccess());
-      })
-      .catch((e) => {
-				console.log('Failed logging in')
-      });
-  };
+export const fetchNewsData = stockSymbol => {
+	console.log('these are the first company ' , stockSymbol)
+	return dispatch =>
+		axios
+			.post(`/api/stocks/news`, {stockSymbol})
+			.then(res => {
+				dispatch(setRecentNews(res.data));
+			})
+			.catch(e => {
+				console.log(e);
+			});
 };

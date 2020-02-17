@@ -16,7 +16,7 @@ export const setUser = user => {
 //Thunks for logging in
 export const logInUser = ({ email, password }) => {
 	return dispatch => {
-		return axios
+		axios
 			.post(`/api/users/login`, { email, password })
 			.then(user => {
         dispatch(logInSuccess());

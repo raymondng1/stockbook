@@ -7,23 +7,19 @@ import { fetchNewsData , fetchRecentNewsData } from '.././redux/stocks/stockActi
 
 class StockNewsData extends Component {
 	componentDidMount() {
-
-
-		// const userIdCookie = document.cookie.replace('uuid=', '');
-		// this.props
-		// 	.fetchWatchListStocks(userIdCookie)
-		// 	.then(res => {
-
-		// 		// let arrOfStockSymbols = res.stockWatchList.map(stockSymbol => stockSymbol.stockTicker) 
-		// 		// this.props.fetchNewsData(arrOfStockSymbols)
-		// 		this.props.fetchNewsData(res.stockWatchList[0].stockTicker)
-		// 	})
-		// 	.catch(e => console.log(e))
+		const userIdCookie = document.cookie.replace('uuid=', '');
+		this.props
+			.fetchWatchListStocks(userIdCookie)
+			.then(res => {
+				let arrOfStockSymbols = res.stockWatchList.map(stockSymbol => stockSymbol.stockTicker) 
+				this.props.fetchNewsData(arrOfStockSymbols)
+				this.props.fetchNewsData(res.stockWatchList[0].stockTicker)
+			})
+			.catch(e => console.log(e))
 	}
 	render() {
 		console.log('these are the props', this.props);
 		const { userWatchList } = this.props;
-
 		return (
 			<div>
 				<NavigationBar />

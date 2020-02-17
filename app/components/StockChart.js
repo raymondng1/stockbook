@@ -19,7 +19,7 @@ class StockChart extends Component {
 		const formatter = value => `$${value}`;
 		const { stockHistoricalPrices, stockInformation } = this.props;
 		if (!stockHistoricalPrices) {
-			return <div> insert chart </div>;
+			return <div> </div>;
 		}
 		return (
 			<main>

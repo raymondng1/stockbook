@@ -21,7 +21,7 @@ class NewsComponent extends Component {
 			<main>
 				<NavigationBar />
 				<br />
-				<div> Recent News Following: </div>
+				<h2> Recent News Following: </h2>
 				{recentNews.map(article => (
 					<main>
 						{' '}
@@ -30,9 +30,11 @@ class NewsComponent extends Component {
 							HeadLine: {article.headline}
 						</div>{' '}
 						<img src={article.imageUrl} />
-						<div> Summary: {article.summary}</div>
+						<div> <span style={{fontWeight:'bold'}}> Summary:</span> {article.summary}</div>
 						<div> Source: {article.source} </div>
 						<Nav.Link href={article.qmUrl}> {article.qmUrl} </Nav.Link>
+						<div> <span style={{fontWeight:'bold'}}>Company Following in relation:</span> {article.related}</div>
+						<br></br>
 					</main>
 				))}
 			</main>

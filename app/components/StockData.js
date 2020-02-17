@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
+import { postToDataBase } from '.././redux/watchlist/watchListActions';
 
 class StockData extends Component {
-	addToTracker = event => {
-		event.preventDefault();
-
-	}
+	addToTracker = (stockTicker, companyName, userId) => {
+		this.props.AddToWatchList({ stockTicker, companyName, userId });
+	};
 	render() {
-		const { stockInformation } = this.props;
+		const { stockInformation, user } = this.props;
 		if (!this.props.stockInformation) {
 			return <div> Search the stock </div>;
 		}
@@ -38,8 +38,18 @@ class StockData extends Component {
 					</div>
 					<div> Price: ${stockInformation.latestPrice}</div>
 				</div>
-				<br/>
-				<Button variant='dark'>Add to Tracker</Button>
+				<br />
+				<Button
+					variant='dark'
+					onClick={e => {
+						this.addToTracker(
+							stockInformation.symbol,
+							stockInformation.companyName,
+							user.id
+						);
+					}}>
+					Add to Tracker
+				</Button>
 			</main>
 		);
 	}
@@ -52,10 +62,9 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = state => {
+const mapDispatchToProps = dispatch => {
 	return {
-		AddToWatchList: data => dispatch(PostToWatchList(data))
+		AddToWatchList: data => dispatch(postToDataBase(data))
 	};
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(StockData);

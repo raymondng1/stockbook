@@ -1,9 +1,9 @@
-import { POST_TO_WATCHLIST } from 'watchListConstants';
+import { SET_TO_WATCHLIST } from './watchListConstants';
 
-export const watchListReducer = (state = {}, action) => {
+export const watchListReducer = (state = [], action) => {
 	switch (action.type) {
-		case POST_TO_WATCHLIST :
-			return action
+		case  SET_TO_WATCHLIST :
+			return [...state, action.stockWatchList]
 		default:
 			return state;
 	}

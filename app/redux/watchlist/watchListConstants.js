@@ -1,1 +1,1 @@
-export const POST_TO_WATCHLIST = 'POST_TO_WATCHLIST';
+export const SET_TO_WATCHLIST = 'SET_TO_WATCHLIST';

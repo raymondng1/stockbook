@@ -10,6 +10,7 @@ import InputStockQuote from './InputStockQuote';
 import Homepage from './Home';
 import Login from './Login';
 import NewsData from './NewsData';
+import WatchList from './WatchList';
 
 class Root extends Component {
 	render() {
@@ -19,7 +20,7 @@ class Root extends Component {
 					<Route path='/home' component={Homepage} />
 					<Route path='/login' component={Login} />
 					{/* <Route path='/news/:id' component={NewsData} /> */}
-					{/* <Route path='/watchlist' component={}/>  */}
+					<Route path='/watchlist' component={WatchList}/> 
 					<Redirect to='/login' />
 				</Switch>
 			</Router>
